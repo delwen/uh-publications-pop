@@ -1,0 +1,14 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# Dimensions credentials
+dsl.ini
+
+# PubMed API key
+api_key.txt
+
+# Python virtual environment
+.idea/
+venv/
