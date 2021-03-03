@@ -1,6 +1,20 @@
 import dimcli
 import json
 import pandas as pd
+import datetime
+import os
+import configparser
+
+# Load paths from the config file
+cfg = configparser.ConfigParser()
+cfg.read("config.ini")
+
+# Define data folder
+data_folder = cfg["paths"]["data"]
+
+# Get date to add to output file names
+today = datetime.datetime.today()
+now = today.strftime("%Y-%m-%d")
 
 institutions_grid = {
     "aachen": ['grid.412301.5'],
@@ -70,4 +84,4 @@ for city, ids in institutions_grid.items():
 
 result = pd.concat(frames)
 result = result[["doi", "city", "year", "type", "pmid", "category_for", "authors"]]
-result.to_csv("data/dimensions-data.csv", index=False)
+result.to_csv(os.path.join(data_folder, now + "_uh-pubs-" + all_years[0] + ".csv"), index=False)
