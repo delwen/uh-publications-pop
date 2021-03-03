@@ -1,11 +1,6 @@
-library(tidyverse)
-library(xml2)
-library(httr)
-library(jsonlite)
+source(here::here("scripts", "environment.R"))
 
-apikey <- readLines("api_key.txt")
-
-data <- read_csv("dimensions-data.csv", col_types = "ccdcdcc")
+data <- read_csv(file.path(data_dir, "2021-03-03_uh-pubs-2018.csv"), col_types = "ccdcdcc")
 
 unique_data <- distinct(data, pmid) %>% select(pmid) %>% drop_na()
 
@@ -17,7 +12,7 @@ output_filename <- Sys.time() %>%
 tribble(
     ~pmid, ~languages_pubmed, ~pubtypes_pubmed, ~authors_pubmed
 ) %>%
-    write_csv(output_filename)
+    write_csv(file.path(data_dir, output_filename))
 
 download_pubmed_metadata <- function (pmid, api_key) {
 
@@ -99,10 +94,10 @@ for (pmid in unique_data$pmid) {
         ~pmid, ~languages_pubmed, ~pubtypes_pubmed, ~authors_pubmed,
         pmid, meta$languages, meta$pubtypes, meta$authors
     ) %>%
-        write_csv(output_filename, append=TRUE)
+        write_csv(file.path(data_dir, output_filename), append=TRUE)
 }
 
-pubmed_metadata <- read_csv(output_filename, col_types = "dccc")
+pubmed_metadata <- read_csv(file.path(data_dir, output_filename), col_types = "dccc")
 
 result <- left_join(data, pubmed_metadata, by="pmid")
-write_csv(result, "dimensions-pubmed-data.csv")
+write_csv(result, file.path(data_dir, paste0(Sys.Date(), "_uh-pubs-2018-pm.csv")))
