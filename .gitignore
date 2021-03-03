@@ -6,6 +6,9 @@
 # Dimensions credentials
 dsl.ini
 
+# Data folder
+data/
+
 # PubMed API key
 api_key.txt
 
