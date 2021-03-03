@@ -9,6 +9,9 @@ dsl.ini
 # Data folder
 data/
 
+# Config file
+config.ini
+
 # PubMed API key
 api_key.txt
 
