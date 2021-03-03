@@ -55,7 +55,7 @@ def get_record(grid_ids, years):
     type="article"
     return publications[doi + year + pmid + type + category_for + authors]"""
     print(query)
-    data = dsl.query_iterative(query, limit=300, maxlimit=2)
+    data = dsl.query_iterative(query, limit=300)
     return data.as_dataframe()
 
 
