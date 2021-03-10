@@ -8,7 +8,7 @@ cran_pkgs <- c(
   "ConfigParser",
   
   # General
-  "tidyverse", "xml2", "httr", "jsonlite", "here",
+  "tidyverse", "xml2", "httr", "jsonlite", "here", "writexl",
   
   #Testing
   "assertr"
