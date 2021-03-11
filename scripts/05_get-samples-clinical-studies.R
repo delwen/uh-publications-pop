@@ -1,4 +1,4 @@
-# Get UH publications with a match to the PAM filter
+# Get UH publications with a match to the clinical filter
 # Draw a random sample 
 
 source(here::here("scripts", "environment.R"))
@@ -6,7 +6,7 @@ source(here::here("scripts", "environment.R"))
 # Draw too many samples so that we still have enough after duplicate removal
 sample_size <- 60
 
-# Filter for publications from UH with a match to the PAM filter
+# Filter for publications from UH with a match to the clinical filter
 data <- read_csv(file.path(data_dir, "2021-03-10_16-17-02-uh-umc-2018-clinical-observational.csv"), col_types = "ccdcdd") %>%
   filter(institution == "UH") %>%
   filter(clinical == 1) %>%
