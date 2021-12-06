@@ -1,3 +1,6 @@
+# Adapted from Benjamin Gregory Carlisle
+# Extract additional metadata from PubMed and join in with data
+
 source(here::here("scripts", "environment.R"))
 
 data <- read_csv(file.path(data_dir, "2021-03-03_uh-pubs-2018.csv"), col_types = "ccdcdcc")
