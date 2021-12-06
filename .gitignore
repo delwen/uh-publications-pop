@@ -18,3 +18,6 @@ api_key.txt
 # Python virtual environment
 .idea/
 venv/
+
+# mac OS
+.DS_Store
