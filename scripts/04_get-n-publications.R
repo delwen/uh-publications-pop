@@ -74,3 +74,5 @@ for (f in c(filter_articles, filter_pmid, gen_filter("syrcle"), gen_filter("pam"
   
   all_results <- left_join(all_results, foo, by="city")
 }
+
+# write to disk
